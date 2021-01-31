@@ -1,0 +1,31 @@
+﻿@page "/employee/{id:int}"
+@inject IViewEmployeeUseCase viewEmployee
+<h3>Szczegóły pracownika</h3>
+<div>
+    @employee.FirstName
+    <br />
+    @employee.LastName
+<br />
+    @employee.Department
+<br />
+    @employee.Email
+</div>
+
+
+
+@code {
+    private Employee employee;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (Id>0)
+        {
+
+      employee=  viewEmployee.Execute(Id);
+        }
+    }
+}

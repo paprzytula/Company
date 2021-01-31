@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+
+
+  <ItemGroup>
+    <Folder Include="ViewEmployeesSchedule\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NinjaNye.SearchExtensions" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Company.CoreBusiness\Company.CoreBusiness.csproj" />
+  </ItemGroup>
+
+</Project>

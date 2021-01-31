@@ -1,0 +1,56 @@
+﻿@page "/employees"
+@inject ISearchEmployeeUseCase searchEmployee
+
+
+<br />
+<SearchBarComponent OnSearch="HandleSearch"></SearchBarComponent>
+<br />
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <th>
+                Nazwisko
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Dział
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (employees != null && employees.Count() > 0)
+        {
+
+            @foreach (var emp in employees)
+            {
+              <EmployeeItemComponent Employee="emp"></EmployeeItemComponent>
+            }
+        }
+        else
+        {
+            <tr><td colspan="4">
+                Cannot find employees</td></tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private IEnumerable<Employee> employees;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        employees = searchEmployee.Execute();
+    }
+    private void HandleSearch(string filter)
+    {
+        employees = searchEmployee.Execute(filter);
+    }
+}

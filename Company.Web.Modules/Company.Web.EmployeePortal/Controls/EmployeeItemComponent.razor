@@ -1,0 +1,15 @@
+﻿@if (this.Employee!=null)
+{
+<tr>
+    <td>@Employee.FirstName</td>
+    <NavLink href="@($"employee/{Employee.EmployeeId}")">
+    <td>@Employee.LastName</td>
+    </NavLink>
+    <td>@Employee.Email</td>
+    <td>@Employee.Department</td>
+</tr>
+}
+@code {
+    [Parameter]
+    public Employee Employee { get; set; }
+}
